@@ -15,7 +15,7 @@ export ZOPEN_STABLE_URL=""  # Specify the stable build URL (either git or tarbal
 export ZOPEN_STABLE_DEPS="" # Specify the stable build dependencies.
 
 ## Required IF ZOPEN_BUILD_LINE='DEV'
-export ZOPEN_DEV_URL="https://github.com/jphartmann/gas2asm"   # Specify the dev build URL
+export ZOPEN_DEV_URL="https://github.com/jphartmann/gas2asm.git"   # Specify the dev build URL
 export ZOPEN_DEV_DEPS="zoslib make"  # Specify the dev build dependencies
 
 ## Specify a space-delimited list of applicable categories.
@@ -34,10 +34,10 @@ export ZOPEN_SYSTEM_PREREQ=""
 ### Build stage control environment variables
 ###
 
-#export ZOPEN_BOOTSTRAP="skip" ## Bootstrap program to run (defaults to './bootstrap')
+export ZOPEN_BOOTSTRAP="skip" ## Bootstrap program to run (defaults to './bootstrap')
 #export ZOPEN_CHECK="skip"     ## Check program to run (defaults to 'make')
-#export ZOPEN_CONFIGURE="skip" ## Configuration program to run (defaults to './configure')
-#export ZOPEN_INSTALL="skip"   ## Installation program to run (defaults to 'make')
+export ZOPEN_CONFIGURE="skip" ## Configuration program to run (defaults to './configure')
+export ZOPEN_INSTALL="skip"   ## Installation program to run (defaults to 'make')
 #export ZOPEN_MAKE="skip"      ## Build program to run (defaults to 'make')
 #export ZOPEN_CLEAN=""         ## Clean up program to run (defaults to 'make')
 

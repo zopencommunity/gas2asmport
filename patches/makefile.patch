@@ -1,0 +1,13 @@
+diff --git a/makefile b/makefile
+index 08addc7..4cd47b5 100644
+--- a/makefile
++++ b/makefile
+@@ -28,7 +28,7 @@ ${INSTALLMAC}/%: macros/%
+ 
+ M:=gas2asm asmxpnd
+ ML:=../cmslib-exec/fplg2a.maclib
+-all: $M m
++all: $M
+ 
+ m: ${ML}
+ 
