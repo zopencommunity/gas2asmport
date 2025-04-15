@@ -1,9 +1,9 @@
 diff --git a/Makefile.mvs b/Makefile.mvs
 new file mode 100644
-index 0000000..72f7abd
+index 0000000..55f94ac
 --- /dev/null
 +++ b/Makefile.mvs
-@@ -0,0 +1,74 @@
+@@ -0,0 +1,70 @@
 +# gnu make required.  flex not required unless you change the .l file.
 +
 +.SUFFIXES: .maclib .macro .assemble .listing
@@ -36,12 +36,8 @@ index 0000000..72f7abd
 +m: ${ML}
 +
 +${ML}: ${MACS}
-+	for mac in $@; do \
-+^I^Inosfx=${mac%%.*} \
-+^I^Inopfx=${nosfx##*/} \
-+		ucname=$(echo "${nopfx}" | tr '[:lower:]' '[:upper:]') \
-+		echo "ln -s ${mac} $>/${ucname}" \
-+	done
++	../bin/genmaclib ${ML} '*.macro'
++
 +
 +# Ensure that the generated flex output stays.	OpenSuse 11 ships a
 +# broken flex that mangles things somewhat royal.

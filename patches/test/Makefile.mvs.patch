@@ -1,15 +1,13 @@
 diff --git a/test/Makefile.mvs b/test/Makefile.mvs
 new file mode 100644
-index 0000000..136d5f2
+index 0000000..1cfd926
 --- /dev/null
 +++ b/test/Makefile.mvs
-@@ -0,0 +1,30 @@
+@@ -0,0 +1,26 @@
 +.SUFFIXES: .assemble .text
 +.PHONY: all clean check ok
 +.SECONDARY: .assemble
 +
-+OLD_SHELL:=${SHELL}
-+# SHELL=$(warning [target: $@  modified: ($?)])$(OLD_SHELL)
 +MOD := ../gas2asm
 +XPD := ../asmxpnd
 +
@@ -27,10 +25,8 @@ index 0000000..136d5f2
 +ok:
 +	mv check.asm check.asmok
 +
-+# This works only if you have a hlasm that runs on the platform
-+# --macrobase should point to the directory containing the @file etc. macros
 +%.text: %.assemble
-+	hlasm --macrobase ../macros $*
++	as -I ../macros $*
 +
 +clean:
 +	rm -f *.assemble *.text check.asm
