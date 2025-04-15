@@ -1,9 +1,9 @@
 diff --git a/Makefile.mvs b/Makefile.mvs
 new file mode 100644
-index 0000000..ad1345d
+index 0000000..50b1b24
 --- /dev/null
 +++ b/Makefile.mvs
-@@ -0,0 +1,70 @@
+@@ -0,0 +1,66 @@
 +# gnu make required.  flex not required unless you change the .l file.
 +
 +.SUFFIXES: .maclib .macro .assemble .listing
@@ -17,7 +17,8 @@ index 0000000..ad1345d
 +
 +INSTALLBIN:=install/bin
 +INSTALLMAC:=install/macros
-+MACS:=${wildcard macros/*.macro}
++MACDIR:=macros
++MACREADME:=${MACDIR}/README.md
 +MACROS:=${notdir ${MACS}}
 +
 +CFLAGS:=-g -Wall -Werror
@@ -30,13 +31,12 @@ index 0000000..ad1345d
 +	cp -p $< $@
 +
 +M:=gas2asm asmxpnd
-+ML:=macros
-+all: $M $(ML)
 +
-+m: ${ML}
++all: ${M} ${MACREADME}
 +
-+${ML}: ${MACS}
-+	../bin/genmaclib ${ML} '*.macro'
++${MACREADME}:
++	../bin/genmaclib ${MACDIR} '*.macro'
++	touch ${MACREADME}
 +
 +
 +# Ensure that the generated flex output stays.	OpenSuse 11 ships a
@@ -55,10 +55,6 @@ index 0000000..ad1345d
 +MP:=${addprefix ${INSTALLMAC}/,${MACROS}}
 +install-macros: ${MP} | ${INSTALLMAC}
 +
-+.PHONY: say
-+say:
-+	@echo Macros: ${MACROS}
-+
 +t: $M
 +	rm -f core
 +	./gas2asm -f <t.s >t.out 2>t.dbg
@@ -69,7 +65,7 @@ index 0000000..ad1345d
 +	hlasm --macrobase macros test
 +
 +clean:
-+	rm -f core *.o $M t.out t.dbg
++	rm -f core *.o $M t.out t.dbg ${MACREADME}
 +	make -f Makefile.mvs -C test clean
 +
 +check: $M
