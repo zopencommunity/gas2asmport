@@ -1,0 +1,18 @@
+#!/bin/sh
+
+#
+# Simple script to create symbolic links of uppercased name
+# to original name
+#
+dir=$1
+pattern=$2
+
+cd "${dir}"
+for mac in ${pattern}; do
+  nosfx=${mac%%.*}
+  nopfx=${nosfx##*/}
+  ucname=$(echo "${nopfx}" | tr '[:lower:]' '[:upper:]')
+  rm -f "${ucname}"
+  ln -s "${mac}" "${ucname}"
+done
+
