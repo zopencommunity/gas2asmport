@@ -34,10 +34,11 @@ export ZOPEN_SYSTEM_PREREQ=""
 ### Build stage control environment variables
 ###
 
-export ZOPEN_BOOTSTRAP="skip" ## Bootstrap program to run (defaults to './bootstrap')
-export ZOPEN_CONFIGURE="skip" ## Configuration program to run (defaults to './configure')
-export ZOPEN_INSTALL="skip"   ## Installation program to run (defaults to 'make')
-export ZOPEN_MAKE_OPTS="-f Makefile.mvs"     ## Check program to run (defaults to 'make')
+export ZOPEN_BOOTSTRAP="skip" ## No bootstrap required
+export ZOPEN_CONFIGURE="skip" ## No configuration required
+export ZOPEN_MAKE_OPTS="-f Makefile.mvs" 
+export ZOPEN_CHECK_OPTS="-f Makefile.mvs check" 
+export ZOPEN_INSTALL_OPTS=="-f Makefile.mvs install"
 
 
 ###

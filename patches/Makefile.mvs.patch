@@ -1,6 +1,6 @@
 diff --git a/Makefile.mvs b/Makefile.mvs
 new file mode 100644
-index 0000000..55f94ac
+index 0000000..ad1345d
 --- /dev/null
 +++ b/Makefile.mvs
 @@ -0,0 +1,70 @@
@@ -15,8 +15,8 @@ index 0000000..55f94ac
 +%.listing: %.assemble
 +	hlasm -option term -macrobase macros $*
 +
-+INSTALLBIN:=${HOME}/bin
-+INSTALLMAC:=${HOME}/macros
++INSTALLBIN:=install/bin
++INSTALLMAC:=install/macros
 +MACS:=${wildcard macros/*.macro}
 +MACROS:=${notdir ${MACS}}
 +
@@ -30,7 +30,7 @@ index 0000000..55f94ac
 +	cp -p $< $@
 +
 +M:=gas2asm asmxpnd
-+ML:=../maclib
++ML:=macros
 +all: $M $(ML)
 +
 +m: ${ML}
@@ -70,7 +70,7 @@ index 0000000..55f94ac
 +
 +clean:
 +	rm -f core *.o $M t.out t.dbg
-+	make -C test clean
++	make -f Makefile.mvs -C test clean
 +
 +check: $M
-+	(cd test; gmake Makefile.mvs)
++	(cd test; make -f Makefile.mvs)
