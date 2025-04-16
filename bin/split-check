@@ -43,7 +43,6 @@ for aggregate in $@; do
   printf '%s\n' "${lines}" | while IFS= read -r end; do
     if [ -n "${start}" ]; then
       af="${files[i]}.assemble"
-      printf "%s %d %d\n" "${af}" "${start}" "${end}"
       taillines=$((end - start))
       headlines=$((end - 1))
       content=$(head -n "${headlines}" "${aggregate}" | tail -n "${taillines}")
