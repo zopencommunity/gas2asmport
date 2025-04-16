@@ -1,0 +1,10 @@
+diff --git a/test/check.asmok b/test/check.asmok
+index 1d306e7..2c51be4 100644
+--- a/test/check.asmok
++++ b/test/check.asmok
+@@ -1,4 +1,4 @@
+- @file    deflate
++ @file    deflate2
+ *  GNU C (SUSE Linux) version 4.3.4 [gcc-4_3-branch revision 152973] (s+
+                390x-suse-linux)
+ * 	compiled by GNU C version 4.3.4 [gcc-4_3-branch revision 152973], GM+

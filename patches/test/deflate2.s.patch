@@ -1,0 +1,29 @@
+diff --git a/test/deflate2.s b/test/deflate2.s
+index 957cd92..d94d0a4 100644
+--- a/test/deflate2.s
++++ b/test/deflate2.s
+@@ -3,7 +3,7 @@
+ #	compiled by GNU C version 4.3.4 [gcc-4_3-branch revision 152973], GMP version 4.2.3, MPFR version 2.3.2.
+ # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ # options passed:  -fpreprocessed deflate.i -m31 -march=g5 -mtune=z9-109
+-# -mesa -Wno-format -Werror -Wall -fexec-charset=IBM-1047 -fverbose-asm
++# -mesa -Wall -Werror -Wno-format -fexec-charset=IBM-1047 -fverbose-asm
+ # options enabled:  -falign-loops -fargument-alias
+ # -fasynchronous-unwind-tables -fauto-inc-dec -fbranch-count-reg -fcommon
+ # -fearly-inlining -feliminate-unused-debug-types -ffunction-cse -fgcse-lm
+@@ -8052,6 +8052,15 @@ deflate_huff:
+ 	.uleb128 0xb
+ 	.align	4
+ .LEFDE49:
++	.hidden	_tr_flush_block
++	.hidden	_dist_code
++	.hidden	_length_code
++	.hidden	_tr_stored_block
++	.hidden	_tr_align
++	.hidden	_tr_flush_bits
++	.hidden	_tr_init
++	.hidden	zcfree
++	.hidden	zcalloc
+ 	.ident	"GCC: (SUSE Linux) 4.3.4 [gcc-4_3-branch revision 152973]"
+ 	.section	.comment.SUSE.OPTs,"MS",@progbits,1
+ 	.string	"ospWg"
