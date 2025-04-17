@@ -38,8 +38,7 @@ export ZOPEN_BOOTSTRAP="skip" ## No bootstrap required
 export ZOPEN_CONFIGURE="skip" ## No configuration required
 export ZOPEN_MAKE_OPTS="-f Makefile.mvs" 
 export ZOPEN_CHECK_OPTS="-f Makefile.mvs check" 
-export ZOPEN_INSTALL_OPTS=="-f Makefile.mvs install"
-
+export ZOPEN_INSTALL_OPTS="-f Makefile.mvs install"
 
 ###
 ### Required user-supplied functions

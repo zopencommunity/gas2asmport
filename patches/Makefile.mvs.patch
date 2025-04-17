@@ -1,9 +1,9 @@
 diff --git a/Makefile.mvs b/Makefile.mvs
 new file mode 100644
-index 0000000..50b1b24
+index 0000000..427466e
 --- /dev/null
 +++ b/Makefile.mvs
-@@ -0,0 +1,66 @@
+@@ -0,0 +1,68 @@
 +# gnu make required.  flex not required unless you change the .l file.
 +
 +.SUFFIXES: .maclib .macro .assemble .listing
@@ -50,7 +50,9 @@ index 0000000..50b1b24
 +${INSTALLMAC}:
 +	mkdir -p ${INSTALLMAC}
 +
-+install: ${INSTALLBIN}/gas2asm ${INSTALLBIN}/asmxpnd | ${INSTALLBIN}
++install: ${M} ${MACREADME}
++	cp gas2asm asmxmpnd ${INSTALLBIN}
++	cp ${MACDIR}/* ${INSTALLMAC}
 +
 +MP:=${addprefix ${INSTALLMAC}/,${MACROS}}
 +install-macros: ${MP} | ${INSTALLMAC}
