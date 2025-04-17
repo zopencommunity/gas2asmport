@@ -1,6 +1,6 @@
 diff --git a/Makefile.mvs b/Makefile.mvs
 new file mode 100644
-index 0000000..427466e
+index 0000000..9100e1e
 --- /dev/null
 +++ b/Makefile.mvs
 @@ -0,0 +1,68 @@
@@ -50,9 +50,9 @@ index 0000000..427466e
 +${INSTALLMAC}:
 +	mkdir -p ${INSTALLMAC}
 +
-+install: ${M} ${MACREADME}
-+	cp gas2asm asmxmpnd ${INSTALLBIN}
-+	cp ${MACDIR}/* ${INSTALLMAC}
++install: ${M} ${MACREADME} ${INSTALLBIN} ${INSTALLMAC}
++	cp -f gas2asm asmxpnd ${INSTALLBIN}
++	cp -f ${MACDIR}/* ${INSTALLMAC}/
 +
 +MP:=${addprefix ${INSTALLMAC}/,${MACROS}}
 +install-macros: ${MP} | ${INSTALLMAC}
