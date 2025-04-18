@@ -1,9 +1,9 @@
 diff --git a/test/Makefile.mvs b/test/Makefile.mvs
 new file mode 100644
-index 0000000..a141e39
+index 0000000..c7d954e
 --- /dev/null
 +++ b/test/Makefile.mvs
-@@ -0,0 +1,23 @@
+@@ -0,0 +1,24 @@
 +.SUFFIXES: .assemble .o
 +.PHONY: all clean check
 +.SECONDARY: .assemble
@@ -17,11 +17,12 @@ index 0000000..a141e39
 +hlasmsrc := $(patsubst $(GASDIR)/%,$(HLASMDIR)/%,$(gassrc:.s=.assemble))
 +
 +$(HLASMDIR)/%.assemble: $(GASDIR)/%.s ${MOD} ${XPD}
++	@mkdir -p $(HLASMDIR)
 +	((${MOD} <$< | ${XPD} >$@) || (mv $@ $*.asm; exit 1))
 +
++# use xargs below to trim blanks around wc -l
 +check: $(hlasmsrc)
 +	../../bin/split-check expected check.asmok
-+# use xargs below to trim blanks around wc -l
 +	fail=$(shell diff -qr actual expected | wc -l | xargs)
 +	total=$(shell diff -qrs actual expected | wc -l | xargs)
 +

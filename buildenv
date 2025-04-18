@@ -38,7 +38,7 @@ export ZOPEN_BOOTSTRAP="skip" ## No bootstrap required
 export ZOPEN_CONFIGURE="skip" ## No configuration required
 export ZOPEN_MAKE_OPTS="-f Makefile.mvs" 
 export ZOPEN_CHECK_OPTS="-f Makefile.mvs check" 
-export ZOPEN_INSTALL_OPTS="-f Makefile.mvs install"
+export ZOPEN_INSTALL_OPTS="-e INSTALLDIR=\${ZOPEN_INSTALL_DIR} -f Makefile.mvs install"
 
 ###
 ### Required user-supplied functions
@@ -51,10 +51,12 @@ zopen_check_results()
   chk="$1/$2_check.log"
 
   # Echo the following information to gauge build health
-  echo "actualFailures:0"
-  echo "totalTests:1"
-  echo "expectedFailures:0"
-  echo "expectedTotalTests:1"
+  actualFailures=$(grep -e '^fail=' $chk | awk -F'=' '{ print $2; }')
+  totalTests=$(grep -e '^total=' $chk | awk -F'=' '{ print $2; }')
+  echo "actualFailures:${actualFailures}"
+  echo "totalTests:${totalTests}"
+  echo "expectedFailures:4"
+  echo "expectedTotalTests:8"
 }
 
 zopen_get_version()
