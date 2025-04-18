@@ -1,9 +1,9 @@
 diff --git a/Makefile.mvs b/Makefile.mvs
 new file mode 100644
-index 0000000..301b460
+index 0000000..a6a6350
 --- /dev/null
 +++ b/Makefile.mvs
-@@ -0,0 +1,69 @@
+@@ -0,0 +1,71 @@
 +# gnu make required.  flex not required unless you change the .l file.
 +
 +.SUFFIXES: .maclib .macro .assemble .listing
@@ -43,6 +43,8 @@ index 0000000..301b460
 +# Ensure that the generated flex output stays.	OpenSuse 11 ships a
 +# broken flex that mangles things somewhat royal.
 +gas2asm.c: gas2asm.l
++	flex -o $@ $<
++
 +gas2asm.o: gas2asm.c symtab.c loadfile.c le128.c lookup3.c gas2asmmain.c
 +
 +${INSTALLBIN}:

@@ -16,7 +16,7 @@ export ZOPEN_STABLE_DEPS="" # Specify the stable build dependencies.
 
 ## Required IF ZOPEN_BUILD_LINE='DEV'
 export ZOPEN_DEV_URL="https://github.com/jphartmann/gas2asm.git"   # Specify the dev build URL
-export ZOPEN_DEV_DEPS="zoslib make diffutils"  # Specify the dev build dependencies
+export ZOPEN_DEV_DEPS="zoslib make diffutils flex m4"  # Specify the dev build dependencies
 
 ## Specify a space-delimited list of applicable categories.
 ## See tool_categories.txt for valid options
